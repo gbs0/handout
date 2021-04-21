@@ -1,0 +1,59 @@
+<%= form_with(model: chapter, local: true) do |form| %>
+  <% if chapter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
+
+      <ul>
+      <% chapter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content %>
+    <%= form.text_field :content, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :author %>
+    <%= form.text_field :author, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :book_id %>
+    <%= form.text_field :book_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if chapter.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', chapter, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if chapter.persisted? %>
+      <%= link_to "Cancel", chapter, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", chapters_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

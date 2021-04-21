@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :chapters
   resources :books
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'

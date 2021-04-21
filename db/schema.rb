@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_141546) do
+ActiveRecord::Schema.define(version: 2021_04_21_143825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,30 @@ ActiveRecord::Schema.define(version: 2021_04_21_141546) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "category"
+    t.string "topic"
+    t.string "title"
+    t.string "author"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "chapters", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "content"
+    t.string "author"
+    t.bigint "book_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_chapters_on_book_id"
+    t.index ["user_id"], name: "index_chapters_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -99,5 +123,8 @@ ActiveRecord::Schema.define(version: 2021_04_21_141546) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "users"
+  add_foreign_key "chapters", "books"
+  add_foreign_key "chapters", "users"
   add_foreign_key "services", "users"
 end

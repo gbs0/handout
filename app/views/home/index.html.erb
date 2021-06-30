@@ -1,10 +1,11 @@
 <div class="bg-gray-100 overflow-x-hidden">
 
+
     <div class="px-6 py-8">
         <div class="flex justify-between container mx-auto">
             <div class="w-full lg:w-8/12">
                 <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Post</h1>
+                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Last Legislative Drafts</h1>
                     <div>
                         <select class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             <option>Latest</option>
@@ -13,6 +14,14 @@
                     </div>
                 </div>
                 <div class="mt-6">
+                    <div class="search-form mb-4 text-center">
+                        <%= form_tag("/scrape", method: "get") do %>
+                            <%= label_tag(:q, "Select search type:") %>
+                            <%= select_tag "choice", options_for_select(Bill::OPTIONS) %>
+                            <%= submit_tag("Search", :class=>"btn btn-sm btn-secondary ml-2")  %>
+                        <% end %>   
+                    </div>
+                    <!-- Div de resultados -->
                     <div class="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
                         <div class="flex justify-between items-center">
                         <span class="font-light text-gray-600">Jun 1,2020</span>
@@ -187,26 +196,23 @@
                     </div>
                 </div>
                 <div class="mt-10 px-8">
-                    <h1 class="mb-4 text-xl font-bold text-gray-700">Categorias</h1>
+                    <h1 class="mb-4 text-xl font-bold text-gray-700">Categories</h1>
                     <div class="flex flex-col bg-white px-4 py-6 max-w-sm mx-auto rounded-lg shadow-md">
                         <ul>
                             <li><a href="#" class="text-gray-700 font-bold mx-1 hover:text-gray-600 hover:underline">-
-                                    Medicina Veterinária</a></li>
+                                    Projeto de Decreto Legislativo</a></li>
                             <li class="mt-2"><a href="#"
                                     class="text-gray-700 font-bold mx-1 hover:text-gray-600 hover:underline">-
-                                    Engenharia Civil</a></li>
+                                    Projeto de Lei</a></li>
                             <li class="mt-2"><a href="#"
                                     class="text-gray-700 font-bold mx-1 hover:text-gray-600 hover:underline">- Engenharia Elétrica</a>
                             </li>
                             <li class="mt-2"><a href="#"
                                     class="text-gray-700 font-bold mx-1 hover:text-gray-600 hover:underline">-
-                                    Design</a></li>
+                                    Projeto de Resolução</a></li>
                             <li class="flex items-center mt-2"><a href="#"
                                     class="text-gray-700 font-bold mx-1 hover:text-gray-600 hover:underline">-
-                                    Biomedicina</a></li>
-                            <li class="flex items-center mt-2"><a href="#"
-                                    class="text-gray-700 font-bold mx-1 hover:text-gray-600 hover:underline">- Fisíca</a>
-                            </li>
+                                    Requerimento</a></li>
                         </ul>
                     </div>
                 </div>

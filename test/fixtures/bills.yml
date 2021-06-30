@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  summary: MyString
+  timestamp: MyString
+  author: MyString
+  localization: MyString
+  status: MyString
+  expiration_date: MyString
+  last_process_date: MyString
+  last_process: MyString
+  attachment_docs: 1
+  link: MyString
+
+two:
+  title: MyString
+  summary: MyString
+  timestamp: MyString
+  author: MyString
+  localization: MyString
+  status: MyString
+  expiration_date: MyString
+  last_process_date: MyString
+  last_process: MyString
+  attachment_docs: 1
+  link: MyString

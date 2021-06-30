@@ -1,0 +1,45 @@
+<div class="page-header">
+  <%= link_to bills_path, class: 'btn btn-default' do %>
+    All Bills
+  <% end %>
+  <%= link_to edit_bill_path(@bill), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show bill</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><%= @bill.title %></dd>
+
+  <dt>Summary:</dt>
+  <dd><%= @bill.summary %></dd>
+
+  <dt>Timestamp:</dt>
+  <dd><%= @bill.timestamp %></dd>
+
+  <dt>Author:</dt>
+  <dd><%= @bill.author %></dd>
+
+  <dt>Localization:</dt>
+  <dd><%= @bill.localization %></dd>
+
+  <dt>Status:</dt>
+  <dd><%= @bill.status %></dd>
+
+  <dt>Expiration date:</dt>
+  <dd><%= @bill.expiration_date %></dd>
+
+  <dt>Last process date:</dt>
+  <dd><%= @bill.last_process_date %></dd>
+
+  <dt>Last process:</dt>
+  <dd><%= @bill.last_process %></dd>
+
+  <dt>Attachment docs:</dt>
+  <dd><%= @bill.attachment_docs %></dd>
+
+  <dt>Link:</dt>
+  <dd><%= @bill.link %></dd>
+
+</dl>

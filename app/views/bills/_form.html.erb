@@ -1,0 +1,84 @@
+<%= form_with(model: bill, local: true) do |form| %>
+  <% if bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+
+      <ul>
+      <% bill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :summary %>
+    <%= form.text_field :summary, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :timestamp %>
+    <%= form.text_field :timestamp, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :author %>
+    <%= form.text_field :author, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :localization %>
+    <%= form.text_field :localization, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :status %>
+    <%= form.text_field :status, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :expiration_date %>
+    <%= form.text_field :expiration_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_process_date %>
+    <%= form.text_field :last_process_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_process %>
+    <%= form.text_field :last_process, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :attachment_docs %>
+    <%= form.number_field :attachment_docs, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :link %>
+    <%= form.text_field :link, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if bill.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', bill, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if bill.persisted? %>
+      <%= link_to "Cancel", bill, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", bills_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

@@ -21,11 +21,18 @@
                                 </div>
                                 <div class="flex justify-between items-center mt-4"><a href=<%= result.link %>
                                         class="text-blue-500 hover:underline">Read more</a>
-                                    <div><a href="#" class="flex items-center"><img
-                                                src="https://www.novohamburgo.rs.gov.br/sites/pmnh/files/paragrafo/2018-04/brasao-NH.jpg"
-                                                alt="avatar" class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block">
-                                            <h1 class="text-gray-700 font-bold hover:underline"><%= result.author %></h1>
-                                        </a></div>
+                                    <div>
+                                        <a href="#" class="flex items-center"><img
+                                                    src="https://www.novohamburgo.rs.gov.br/sites/pmnh/files/paragrafo/2018-04/brasao-NH.jpg"
+                                                    alt="avatar" class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block">
+                                                <h1 class="text-gray-700 font-bold hover:underline"><%= result.author %></h1>
+                                        </a>
+                                    </div>
+                                    <% if current_user %>
+                                        <%= link_to "Save Record", bills_path(bill: result.as_json), method: "POST", class: "btn btn-sm btn-success" %>
+                                    <% else %>
+                                        <%= link_to "Login to Save", bills_path(bill: result.as_json), method: "POST", class: "btn btn-sm btn-success" %>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>

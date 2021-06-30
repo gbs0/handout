@@ -1,5 +1,9 @@
+require 'pry'
+
 class BillsController < ApplicationController
   before_action :set_bill, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create ]
+  before_action :set_user, only: %i[ new create ]
 
   # GET /bills or /bills.json
   def index
@@ -22,7 +26,7 @@ class BillsController < ApplicationController
   # POST /bills or /bills.json
   def create
     @bill = Bill.new(bill_params)
-
+    @bill.user_id = @user.id
     respond_to do |format|
       if @bill.save
         format.html { redirect_to @bill, notice: "Bill was successfully created." }
@@ -109,5 +113,13 @@ class BillsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def bill_params
       params.require(:bill).permit(:title, :summary, :timestamp, :author, :localization, :status, :expiration_date, :last_process_date, :last_process, :attachment_docs, :link)
+    end
+
+    def serialized_params
+      params.require(:bill).permit(:bill, :authenticity_token)
+    end
+
+    def set_user
+      @user = current_user
     end
 end

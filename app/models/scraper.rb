@@ -8,7 +8,7 @@ class Scraper
         instances = []
         document.xpath("//html/body/div[1]/main/div/div[4]/table/tr").each_with_index do |div, index|    
             item = {}
-            infos = div.xpath("//tr[1]/td/text()").to_a
+            infos = div.xpath("//tr[#{index + 1}]/td/text()").to_a
             item[:title]                = div.xpath("//td/strong[1]/a")[index].children.text
             item[:summary]              = div.css('.dont-break-out').text
             item[:link]                 = "https://sapl.camaranh.rs.gov.br" + div.xpath("//td/strong[1]/a")[index].attributes["href"].value
